@@ -9,6 +9,8 @@ import {
   Video,
   Subtitles,
   Github,
+  Film,
+  BriefcaseBusiness,
 } from "lucide-react";
 
 interface FileState {
@@ -99,9 +101,35 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-zinc-900 to-black text-white">
-      <div className="fixed inset-0 -z-10 opacity-20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500 via-transparent to-transparent animate-pulse" />
-      </div>
+      {/* Header */}
+      <nav className="w-full max-w-7xl mx-auto flex justify-between items-center  pt-10">
+        <div className="flex items-center gap-2">
+          <Film className="w-8 h-8 text-purple-500" />
+          <span className=" text-2xl font-light bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">
+            MP4 TITLES
+          </span>
+        </div>
+        <div className=" flex gap-5">
+          <a
+            href="https://github.com/kapildadhich075/Mp4Titles"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:text-purple-400 transition-colors"
+          >
+            <Github className="w-6 h-6" />
+            <span className="hidden sm:inline">View on GitHub</span>
+          </a>
+          <a
+            href="https://github.com/kapildadhich075/Mp4Titles"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 hover:text-white transition-colors"
+          >
+            <BriefcaseBusiness className="h-5 w-5" />
+            <span className="font-['Inter']">Portfolio</span>
+          </a>
+        </div>
+      </nav>
 
       <div className="container mx-auto px-4 py-8 md:py-16">
         <header className="text-center mb-12">
@@ -227,15 +255,21 @@ const App = () => {
         </div>
 
         <footer className="mt-12 text-center text-gray-400">
-          <a
-            href="https://github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 hover:text-white transition-colors"
-          >
-            <Github className="w-5 h-5" />
-            <span className="font-['Inter']">View on GitHub</span>
-          </a>
+          <div className="flex flex-col items-center gap-2">
+            <p className="font-['Inter']">Built with ❤️ by Kapil Dadhich</p>
+            <p className="text-sm">
+              © {new Date().getFullYear()} MP4 TITLES. All rights reserved. ✨
+            </p>
+            <a
+              href="https://github.com/kapildadhich075"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 hover:text-white transition-colors"
+            >
+              <Github className="h-5 w-5" />
+              <span className="font-['Inter']">Follow me on GitHub 👨‍💻</span>
+            </a>
+          </div>
         </footer>
       </div>
     </div>
