@@ -7,13 +7,32 @@ import subRoutes from "./routes/sub.routes.js"; // Updated to match the actual f
 
 const app = express();
 
+const allowedOrigins = [
+  "https://your-frontend-domain.netlify.app",
+  "http://localhost:5173",
+];
+
+const PORT = process.env.PORT || 3000;
+export const NODE_ENV = process.env.NODE_ENV || "development";
+
 configDotenv();
 app.use(fileUpload());
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 
 app.use("/api/subs", subRoutes);
 
-app.listen(process.env.PORT, () => {
+app.listen(PORT, () => {
   console.log("server started");
 });

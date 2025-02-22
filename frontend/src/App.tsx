@@ -13,6 +13,8 @@ import {
   BriefcaseBusiness,
 } from "lucide-react";
 
+import { API_URL } from "./config";
+
 interface FileState {
   file: File | null;
   preview: string;
@@ -57,10 +59,7 @@ const App = () => {
     setLoading(true);
     try {
       const formData = new FormData(e.currentTarget);
-      const response = await axios.post(
-        "http://localhost:3000/api/subs/",
-        formData
-      );
+      const response = await axios.post(`${API_URL}/api/subs/`, formData);
       setSubtitles(response.data.subs);
     } catch (error) {
       console.error(error);

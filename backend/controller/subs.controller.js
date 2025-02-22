@@ -3,6 +3,9 @@
 import { fileURLToPath } from "url";
 import path from "path";
 import fs from "fs";
+import os from "os";
+import { NODE_ENV } from "../server.js";
+
 import { fileUpload } from "../utils/fileUpload.js";
 import { getContent } from "../utils/genContent.js";
 
@@ -16,7 +19,10 @@ export const uploadFile = async (req, res) => {
     }
 
     const videoFile = req.files.video;
-    const uploadDir = path.join(__dirname, "..", "uploads");
+    const uploadDir =
+      NODE_ENV === "production"
+        ? os.tmpdir()
+        : path.join(__dirname, "..", "uploads");
 
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir);
