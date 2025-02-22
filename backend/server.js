@@ -34,5 +34,5 @@ app.use(
 app.use("/api/subs", subRoutes);
 
 app.listen(PORT, () => {
-  console.log("server started");
+  console.log(`Server is running on port ${PORT}`);
 });
