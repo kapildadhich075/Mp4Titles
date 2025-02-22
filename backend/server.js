@@ -12,10 +12,10 @@ const allowedOrigins = [
   "http://localhost:5173",
 ];
 
+configDotenv();
 const PORT = process.env.PORT || 3000;
 export const NODE_ENV = process.env.NODE_ENV || "development";
 
-configDotenv();
 app.use(fileUpload());
 app.use(express.json());
 app.use(
