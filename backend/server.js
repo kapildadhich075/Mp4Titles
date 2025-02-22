@@ -8,7 +8,7 @@ import subRoutes from "./routes/sub.routes.js"; // Updated to match the actual f
 const app = express();
 
 const allowedOrigins = [
-  "https://mp4titles.netlify.app/",
+  "https://mp4titles.netlify.app",
   "http://localhost:5173",
 ];
 
