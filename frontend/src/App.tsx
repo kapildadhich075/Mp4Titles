@@ -56,6 +56,12 @@ const App = () => {
     e.preventDefault();
     if (!selectedFile.file) return;
 
+    // Check file size (100MB = 100 * 1024 * 1024 bytes)
+    if (selectedFile.file.size > 100 * 1024 * 1024) {
+      alert("Please upload a video file less than 100MB");
+      return;
+    }
+
     setLoading(true);
     try {
       const formData = new FormData(e.currentTarget);
